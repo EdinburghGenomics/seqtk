@@ -1475,8 +1475,9 @@ static void fqc_aux(posstat_t *p, int pos, int64_t allq[94], double perr[94], in
 	printf("\t%.1f\t%.1f", (double)qsum/sum, -4.343*log((psum+1e-6)/(sum+1e-6)));
 	if (qthres <= 0) {
 		for (k = 0; k <= 93; ++k)
-			if (allq[k] > 0) printf("\t%.2f", 100. * p->q[k] / sum);
-	} else printf("\t%.1f\t%.1f", 100. * sum_low / sum, 100. * (sum - sum_low) / sum);
+			if (allq[k] > 0) printf("\t%lld", (long long)p->q[k]);
+	} else printf("\t%lld\t%lld", (long long)sum_low,  (long long)(sum - sum_low));
+//printf("\t%.1f\t%.1f", 100. * sum_low / sum, 100. * (sum - sum_low) / sum);
 	putchar('\n');
 }
 
